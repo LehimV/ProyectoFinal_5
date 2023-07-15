@@ -19,7 +19,7 @@ use App\Http\Controllers\ListaController;
 
 Route::get('/', function () {
   return view('welcome');
-});
+})->name('welcome');
 
 Route::middleware([])->group(function () {
 

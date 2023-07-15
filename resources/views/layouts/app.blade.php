@@ -29,7 +29,7 @@
     <div class="flex">
       <div class="grid grid-rows-3 grid-flow-col justify-center w-20 sm:w-20 h-screen">
         <div class="mt-6">
-          <img src="../logo.svg" width="40" alt="">
+          <a href="{{ route('welcome') }}"> <img src="../logo.svg" width="40" alt=""></a>
         </div>
         <nav class="grid justify-center">
           @php

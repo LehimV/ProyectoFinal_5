@@ -19,11 +19,57 @@
 </header>
 
 
+<div class="xl:container-xl md:container-md mt-10 mx-12">
+  <div class="font-bold text-lg mb-3">Fruit and vegetables</div>
+  <div class="grid lg:grid-cols-4 md:grid-cols-2 lg:gap-10 md:gap-5 sm:gap-2.5">
+    @foreach($itemsCategory1 as $item)
+    <button class="flex justify-between rounded-2xl shadow-md p-4 bg-white font-bold text-left text-base">
+      {{ $item->name }}
+      <span class="material-symbols-outlined ">
+        add
+      </span>
+    </button>
+    @endforeach
+  </div>
 
 
+  <div class="font-bold mt-16 text-lg mb-3">Meat and Fish</div>
+  <div class="grid lg:grid-cols-4 md:grid-cols-2 lg:gap-10 md:gap-5 sm:gap-2.5">
+    @foreach($itemsCategory2 as $item)
+    <button class="flex justify-between rounded-2xl shadow-md p-4 bg-white font-bold text-left text-base">
+      {{ $item->name }}
+      <span class="material-symbols-outlined ">
+        add
+      </span>
+    </button>
+    @endforeach
+  </div>
 
 
+  <div class="font-bold mt-16 text-lg mb-3">Beverages</div>
+  <div class="grid lg:grid-cols-4 md:grid-cols-2 lg:gap-10 md:gap-5 sm:gap-2.5">
+    @foreach($itemsCategory3 as $item)
+    <button class="flex justify-between rounded-2xl shadow-md p-4 bg-white font-bold text-left text-base">
+      {{ $item->name }}
+      <span class="material-symbols-outlined ">
+        add
+      </span>
+    </button>
+    @endforeach
+  </div>
 
+  <div class="font-bold mt-16 text-lg mb-3">Pets</div>
+  <div class="grid lg:grid-cols-4 md:grid-cols-2 lg:gap-10 md:gap-5 sm:gap-2.5">
+    @foreach($itemsCategory4 as $item)
+    <button class="flex justify-between rounded-2xl shadow-md p-4 bg-white font-bold text-left text-base">
+      {{ $item->name }}
+      <span class="material-symbols-outlined ">
+        add
+      </span>
+    </button>
+    @endforeach
+  </div>
 
+</div>
 
 @endsection

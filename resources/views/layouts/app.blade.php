@@ -50,10 +50,10 @@
         <div class="grid content-end mb-5"><img src="../shopping_cart.svg" width="45" alt=""></div>
       </div>
 
-      <div id="content" class="grow h-screen bg-gray-100" style="background-color: #FAFAFE;">
+      <div id="content" class="grow h-min bg-gray-100" style="background-color: #FAFAFE;">
         @yield('contents')
       </div>
-      <div class="flex w-96 sm:w-96 h-screen" style="background-color: #FFF0DE;">
+      <div class="flex w-96 sm:w-96 h-full" style="background-color: #FFF0DE;">
         03
       </div>
     </div>
@@ -61,9 +61,9 @@
 
   </main>
 
-  <footer class="mt-8">
+  <!--<footer class="mt-8">
     <p class="text-center text-gray-600">&copy; 2023 Shoppingify. All rights reserved.</p>
-  </footer>
+  </footer>-->
 
 </body>
 

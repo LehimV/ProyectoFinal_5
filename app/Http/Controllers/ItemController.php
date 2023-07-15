@@ -12,7 +12,23 @@ class ItemController extends Controller
   public function index()
   {
     $items = Item::all()->sortBy('category_id');
-    return view('items.index', ['items' => $items]);
+    $itemsCategory1 = Item::where('category_id', 1)->get();
+    $itemsCategory2 = Item::where('category_id', 2)->get();
+    $itemsCategory3 = Item::where('category_id', 3)->get();
+    $itemsCategory4 = Item::where('category_id', 4)->get();
+
+    return view('items.index', compact(
+      'items',
+      'itemsCategory1',
+      'itemsCategory2',
+      'itemsCategory3',
+      'itemsCategory4'
+    ));
+
+    /*$firstEightItems = $items->take(8);
+    $lastFourItems = $items->skip(8)->take(4);
+
+    return view('items.index', compact('items', 'firstEightItems', 'lastFourItems'));*/
   }
 
   public function create()

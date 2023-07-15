@@ -156,5 +156,33 @@ class ItemTableSeeder extends Seeder
       'created_at' => NOW(),
       'updated_at' => NOW()
     ]);
+    DB::table('item')->insert([
+      'name' => 'Chicken leg box',
+      'note' => 'Chicken leg box',
+      'category_id' => 4,
+      'created_at' => NOW(),
+      'updated_at' => NOW()
+    ]);
+    DB::table('item')->insert([
+      'name' => 'Chicken 1kg',
+      'note' => 'Chicken 1kg',
+      'category_id' => 4,
+      'created_at' => NOW(),
+      'updated_at' => NOW()
+    ]);
+    DB::table('item')->insert([
+      'name' => 'Pork fillets 450g',
+      'note' => 'Pork fillets 450g',
+      'category_id' => 4,
+      'created_at' => NOW(),
+      'updated_at' => NOW()
+    ]);
+    DB::table('item')->insert([
+      'name' => 'Salmon 1kg',
+      'note' => 'Salmon 1kg',
+      'category_id' => 4,
+      'created_at' => NOW(),
+      'updated_at' => NOW()
+    ]);
   }
 }

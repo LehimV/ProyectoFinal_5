@@ -103,3 +103,10 @@ $(document).ready(function () {
     });
   </script>
 */
+
+$(document).ready(function () {
+    $("#btnNew-item").click(function (e) {
+        e.preventDefault();
+        $("#rightPanel").load($(this).attr("href"));
+    });
+});

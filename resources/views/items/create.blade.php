@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
-@section('newItem')
+@section('newItemPanel')
 
-<div id="hs-basic-offcanvas" class="container font-Quicksand">
-  <h1 class="text-2xl font-bold">Add new item</h1>
+<div class="container ">
+  <h1 class="text-2xl font-bold">Add new itemsss</h1>
 </div>
 
 @endsection

@@ -27,6 +27,19 @@ class ItemController extends Controller
     return view('items/create', ['categories' => $categories]);
   }
 
+  public function store(Request $request)
+  {
+    $item = new Item;
+    $item->name = $request->input('name');
+    $item->category_id = $request->input('category_id');
+    $item->note = $request->input('note');
+    $item->image = $request->input('image');
+    $item->save();
+
+    return redirect()->route('items.index');
+  }
+
+
   public function get_top_items_categories()
   {
     $all_items_in_list = DB::table('item_list')->count();
@@ -68,20 +81,6 @@ class ItemController extends Controller
 
     return view('items.top', ['top_items' => $top_items]);
   }
-
-  public function store(Request $request)
-  {
-    $item = new Item;
-    $item->name = $request->input('name');
-    $item->category_id = $request->input('category_id');
-    $item->note = $request->input('note');
-    $item->image = $request->input('image');
-    $item->save();
-
-    return redirect()->route('items.index');
-  }
-
-
 
 
 

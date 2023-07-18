@@ -18,9 +18,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
 
 
-  <!-- styles-->
+  <!-- styles % scripts -->
   @vite('resources/css/app.css')
   <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+  <script src="{{ asset('js/items_to_list.js') }}"></script>
 
 
 </head>
@@ -81,32 +82,32 @@
             </span>
           </div>
 
-          <section class="flex-none">
+          <section class="flex-none mb-5">
             <div class="text-[#828282]">
               Fruit and vegetables
             </div>
-            <div id="category_1"></div>
+            <div id="category_1" class="font-bold"></div>
           </section>
 
-          <section class="flex-none">
+          <section class="flex-none mb-5">
             <div class="text-[#828282]">
               Meat and Fish
             </div>
-            <div id="category_2"></div>
+            <div id="category_2" class="font-bold"></div>
           </section>
 
-          <section class="flex-none">
+          <section class="flex-none mb-5">
             <div class="text-[#828282]">
               Beverages
             </div>
-            <div id="category_3"></div>
+            <div id="category_3" class="font-bold"></div>
           </section>
 
-          <section class="flex-none">
+          <section class="flex-none mb-5">
             <div class="text-[#828282]">
               Pets
             </div>
-            <div id="category_4"></div>
+            <div id="category_4" class="font-bold"></div>
           </section>
         </main>
       </section>
@@ -122,29 +123,7 @@
   </footer>
 
 
-  <script>
-    $(document).ready(function() {
-      $('.item-button').click(function() {
-        var itemId = $(this).data('item-id');
-        var categoryId = $(this).data('category-id');
 
-        $.ajax({
-          url: '/items/' + itemId, // Ruta item ID
-          type: 'GET',
-          success: function(response) {
-            // Actualiza el contenido del panel derecho 
-            var itemName = response.name;
-            var itemHtml = '<div>' + itemName + '</div>';
-            $('#category_' + categoryId).append(itemHtml);
-          },
-          error: function() {
-            // error 
-            console.log('Error al obtener los detalles del item');
-          }
-        });
-      });
-    });
-  </script>
 
 </body>
 

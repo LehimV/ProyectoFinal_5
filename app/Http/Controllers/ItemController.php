@@ -81,6 +81,10 @@ class ItemController extends Controller
     return redirect()->route('items.index');
   }
 
+
+
+
+
   public function show($id)
   {
     $item = Item::findOrFail($id);

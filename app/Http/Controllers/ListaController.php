@@ -3,22 +3,25 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Lista;
-use App\Models\Item;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\CategoryController;
+
+use App\Models\Lista;
+use App\Models\Item;
+use App\Models\Category;
 
 class ListaController extends Controller
 {
   public function index()
   {
     $lists = Lista::all();
-    return view('lists.index', ['lists' => $lists]);
+    return view('lists/index', ['lists' => $lists]);
   }
+
 
   public function create()
   {
-    return view('lists.create');
+    return view('lists/create');
   }
 
   public function store(Request $request)
@@ -31,6 +34,7 @@ class ListaController extends Controller
 
     return redirect()->route('lists.index');
   }
+
 
   public function show($id)
   {
@@ -61,6 +65,7 @@ class ListaController extends Controller
     return view('lists.show', ['list' => $list, 'categories' => $categories, 'list_items' => $list_items]);
   }
 
+
   public function find_items_grouped_by_category(Request $request)
   {
     $list = Lista::where('id', '=', $request->input('list_id'))->first();
@@ -78,12 +83,14 @@ class ListaController extends Controller
     return view('lists.show', ['list' => $list, 'categories' => $categories, 'list_items' => $list_items]);
   }
 
+
   public function find_items($id)
   {
     $list = Lista::findOrFail($id);
     $items = $list->items;
     return view('lists.items', ['list' => $list, 'items' => $items]);
   }
+
 
   public function find_lists_by_month_year(Request $request)
   {
@@ -123,6 +130,7 @@ class ListaController extends Controller
     return view('lists.months', ['lists_by_month' => $lists_by_month]);
   }
 
+
   public function get_number_items_by_month()
   {
     $months = DB::table("list")
@@ -159,17 +167,23 @@ class ListaController extends Controller
     return view('lists.month_items', ['lists_by_month' => $lists_by_month]);
   }
 
+
+
   public function add_item_to_list($item_id, $list_id)
   {
     $item = Item::findOrFail($item_id);
     $list = Lista::findOrFail($list_id);
+
     if (!$item->lists->contains($list_id)) {
       $item->lists()->attach($list);
-      return $item;
+      return response()->json(['success' => 'Item added to list successfully']);
     }
 
-    return 400;
+    return response()->json(['error' => 'Item already exists in list'], 400);
   }
+
+
+
 
   public function set_active_list($list_id)
   {

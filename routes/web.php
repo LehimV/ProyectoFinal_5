@@ -21,11 +21,15 @@ Route::get('/', function () {
   return view('welcome');
 })->name('welcome');
 
+
+
 Route::middleware([])->group(function () {
 
   Route::resource('/items', ItemController::class)->names('items');
   Route::resource('/categories', CategoryController::class)->names('categories');
   Route::resource('/lists', ListaController::class)->names('lists');
+
+
 
   Route::get('/categories/find_by_name', [CategoryController::class, 'find_by_name']);
   Route::get('/items/find_by_name', [ItemController::class, 'find_by_name']);
@@ -50,6 +54,12 @@ Route::middleware([])->group(function () {
   Route::post('/lists/cancel_complete_list', [ListaController::class, 'cancel_complete_list']);
 
   Route::post('/lists/add_item_to_list/{item_id}/{list_id}', [ListaController::class, 'add_item_to_list']);
+  ////
+
+  Route::post('/lists/add-item', [ListaController::class, 'add-item'])->name('lists.add_item');
+
+  Route::post('/lists/index', [ListaController::class, 'add_item'])->name('lists.index');
+
 
   Route::put('/lists/update_list_items', [ListaController::class, 'update_list_items']);
 

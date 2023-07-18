@@ -12,18 +12,7 @@ class ItemController extends Controller
   public function index()
   {
     $items = Item::all()->sortBy('category_id');
-    $itemsCategory1 = Item::where('category_id', 1)->get();
-    $itemsCategory2 = Item::where('category_id', 2)->get();
-    $itemsCategory3 = Item::where('category_id', 3)->get();
-    $itemsCategory4 = Item::where('category_id', 4)->get();
-
-    return view('items.index', compact(
-      'items',
-      'itemsCategory1',
-      'itemsCategory2',
-      'itemsCategory3',
-      'itemsCategory4'
-    ));
+    return view('items/index', compact('items'));
 
     /*$firstEightItems = $items->take(8);
     $lastFourItems = $items->skip(8)->take(4);
@@ -31,10 +20,11 @@ class ItemController extends Controller
     return view('items.index', compact('items', 'firstEightItems', 'lastFourItems'));*/
   }
 
+
   public function create()
   {
     $categories = Category::all();
-    return view('items.create', ['categories' => $categories]);
+    return view('items/create', ['categories' => $categories]);
   }
 
   public function get_top_items_categories()
@@ -94,8 +84,13 @@ class ItemController extends Controller
   public function show($id)
   {
     $item = Item::findOrFail($id);
-    return view('items.show', ['item' => $item]);
+    return response()->json([
+      'name' => $item->name,
+      'category_id' => $item->category_id,
+
+    ]);
   }
+
 
   public function find_by_name(Request $request)
   {
